@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Alunos (LocalStorage)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+    <h1>CRUD de Alunos</h1>
+    <p class="sub">Cadastre, edite e exclua alunos. Os dados ficam salvos no navegador em formato JSON.</p>
+
+    <section class="card">
+        <div class="campos">
+            <div>
+                <label for="nome">Nome</label>
+                <input id="nome" placeholder="Nome do aluno" autocomplete="off">
+            </div>
+            <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" placeholder="email@exemplo.com" autocomplete="off">
+            </div>
+            <div>
+                <label for="idade">Idade</label>
+                <input id="idade" type="number" min="0" max="120" placeholder="Idade">
+            </div>
+        </div>
+        <div class="acoes">
+            <button class="btn btn-azul" id="btnSalvar" onclick="salvar()">Salvar</button>
+            <button class="btn btn-sec" id="btnCancelar" onclick="cancelar()" hidden>Cancelar edição</button>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="acoes barra-ferramentas">
+            <button class="btn btn-verde" onclick="exportar()">Exportar JSON</button>
+            <label class="btn btn-roxo">
+                Importar JSON
+                <input type="file" accept=".json" onchange="importar(event)" hidden>
+            </label>
+            <button class="btn btn-vermelho" onclick="resetar()">Resetar tudo</button>
+        </div>
+
+        <div class="tabela-wrap">
+            <table class="tabela-dados">
+                <thead>
+                    <tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Idade</th><th>Ações</th></tr>
+                </thead>
+                <tbody id="lista"></tbody>
+            </table>
+        </div>
+        <p class="vazio" id="vazio">Nenhum aluno cadastrado ainda. Preencha o formulário acima.</p>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
